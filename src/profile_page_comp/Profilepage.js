@@ -1,7 +1,10 @@
+/**
+ * Profile Page showing the informaiton on the user. Will lead to a login screen if not logged in 
+ */
 import React, { Component } from 'react';
-import ModalContainer from './ModalContainer';
-import CardContainer from './CardContainer';
-import { firebaseApp } from './firebase';
+import ModalContainer from '../cards/ModalContainer';
+import CardContainer from '../cards//CardContainer';
+import { firebaseApp } from '../firebase/firebase';
 
 
 var firebase = require('firebase');
@@ -37,17 +40,18 @@ class Profilepage extends Component {
 
     logChange() {
         firebase.auth().signOut().then(function () {
-            window.location.replace("http://localhost:3000/");
+            window.location.replace("http://www.beztbaba.com/");
             console.log("user is signed out");
         }).catch(function (error) {
             console.log("Sign Out Error: ", error);
         });
     }
+    
     /**
      * edit Profile page where you can change your picture and about status
      */
     editProfie() {
-        window.location.replace('http://localhost:3000/EditProfile');
+        window.location.replace('http://www.beztbaba.com/EditProfile');
     }
 
     render() {
@@ -103,7 +107,7 @@ class Profilepage extends Component {
                                 i++;
                                 document.getElementById('aboutSec').innerText = (userInfo.exists);
                             } while (!userInfo.exists)
-                            window.location.replace('http://localhost:3000/EditProfile');
+                            window.location.replace('http://www.beztbaba.com/EditProfile');
                         }
 
 
@@ -125,30 +129,11 @@ class Profilepage extends Component {
                 } else {
                     //user not logged in
                     //same as replacing the current location in current window. 
-                    window.location.replace("http://localhost:3000/Profilecheck");
+                    window.location.replace("http://www.beztbaba.com/Profilecheck");
                 }
-                /**
-                * Fill in the Video Section
-                
-                var postsRef = databaseRef.ref('videos/');
-                postsRef.on('child_added', function (data) {
-                    showVideo(data.key, data.val().userid, data.val().videoTitle, data.val().videoURL, data.val().videoDesc, data.val().likes, data.val().challenges);
-                });
-                */
             });
         }
 
-        /**
-         * Show the list of videos pulled from the database.
-         
-        function showVideo(dataKey, userid, videoTitle, videoURL, videoDesc, likes, challenges) {
-            console.log(videoTitle);
-            if((userInfo.userID) === userid){
-                //enableVideoEdits();
-
-            }
-        }
-        */
 
         /**
          * WRITE USER DATA when the person signs in for the first time.
@@ -187,7 +172,7 @@ class Profilepage extends Component {
 
         return (
             <div>
-                <div className="container profileContainer" >
+                <div className="profileContainer" >
                     <div className="card profileCard" >
                         <img className="card-img-top" id="imgTop" src="https://firebasestorage.googleapis.com/v0/b/challengemetest-ea2e0.appspot.com/o/chessKing.jpeg?alt=media&token=53fea36b-d54a-41bb-9a03-92be2fc80544" alt="Profile Background Pics" />
                         <div className="card-block cardBlock" >
@@ -227,7 +212,6 @@ class Profilepage extends Component {
 
                     </div>
                     <CardContainer categoryName="Trending" />
-                    <CardContainer categoryName="Latest" />
                 </div>
                 <ModalContainer />
             </div>
