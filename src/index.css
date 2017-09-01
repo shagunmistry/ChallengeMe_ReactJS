@@ -1,3 +1,7 @@
+/********navbar************/
+#navContainer{
+	margin-top: 0px;
+}
 
 
 /************* Whole BODY Styles *******************/
@@ -55,7 +59,6 @@ button{
 	max-width: 1000px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	background-color: transparent;
 	margin-right: auto; margin-left: auto;
 	border: none;
 }
@@ -124,7 +127,7 @@ button{
 /***********************************Card Container <--Cards used in Homepage to show videos ****************************************/
 .container{
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 }
 #generalCard{
 	width: 525px;
@@ -159,51 +162,42 @@ button{
 #commentSection{
 	float: left;
 }
+#buttonContainerRow{
 
-/****************************************OnGoingChallenges page****************************************/
-.onGoingCard{
-	width: 32rem;
-	height: 350px;
-	padding: 0;
-	border: 1px solid black;
-	left: 25%;
-	transition: 0.5s ease;
 }
-.onGoingCard:hover{
-	height: 500px;
-	width: 500px;
-	background-color:white;
-	border:none;
-	color: black;
-	z-index: 100;
-	left: -5px;
+/****************************************Challenges Page****************************************/
+.groupCard{
+	max-height: 100%;	
+	background-color: white;
 }
-@media screen and (max-width: 1135px){
-	.onGoingCard{
-		left: 0;
-		margin: 5px;
-		float: left;
-	}
-	.onGoingCard:hover{
-		height: 450px;
-		width: 40rem;
-			left: -20px;
-		}
+#challengerVideo{
+	margin: 5px;
+	max-width: 100%;
 }
-.onGoingInfo{
-	float: left;
-	margin-left: 10px;
-	color: white;
-	white-space: pre-line;
+#challengerInfo{
+	padding:5px;
 }
-.challengePic{
-	max-width: 100px !important;
-	max-height: 100px; 
-	position: relative;
-	margin: 5px 5px 5px 5px;
+#videoChallengeTitle{
+	margin-top: 0;
+}
+#challengerPic{
+	max-height: 90px;
+	max-width: 100px;
+}
+#challengePicCol{
 	float: left;
 }
-/*Login Page*/
+#titleInfoCol{
+	font-size: 15px;
+}
+#challenge_button_place{
+	padding: 10px 10px 10px 10px;
+	float: right;
+}
+.style14{
+	margin: 1px; 
+}
+/******************************************Login Page************************************/
 .loginSection{
 	width: 40rem;
 	margin-left: auto;
@@ -214,7 +208,7 @@ button{
 	border-color: white;
 }
 
-/*Upload Video Card Page*/
+/********************************************************Upload Video Card Page***********************/
 .uploadCard{
 	margin-right: auto;
 	margin-left: auto;
@@ -233,8 +227,17 @@ button{
 	max-height: 1000px;
 	max-width: 100%;
 }
+#progressChallenge{
+	padding: 5px;
+	margin-top: 10px;
+	width:300px;
+	float: left; 
+}
+#like_progress_bar{
+	height: 10px;
+}
 
-/******EDIT PROFILE CARD PAGE******/
+/********************************************************EDIT PROFILE CARD PAGE******/
 #profilePicture{
 	max-height: 100px;
 	max-width: 275px;

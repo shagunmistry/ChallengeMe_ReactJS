@@ -3,9 +3,8 @@
  */
 /**************************DON'T FORGET TO ADD THE PROFILE PIC INFORMATION*****************/
 import React, { Component } from 'react';
-import * as firebase from 'firebase';
 //Default firebase App 
-import { firebaseApp } from '../firebase/firebase';
+import { firebaseApp } from '../firebase/Firebase';
 //import ReactFileReader from 'react-file-reader';
 import Dropzone from 'react-dropzone';
 
@@ -36,7 +35,7 @@ class UploadVideo extends Component {
     onDrop(acceptedFiles, rejectedFiles) {
         if (rejectedFiles == undefined && acceptedFiles[0] == undefined) {
             window.alert("Please choose a valid video file!");
-            window.location.replace('http://www.beztbaba.com/UploadVideo');
+            window.location.replace('http://localhost:3000/UploadVideo');
         } else {
             console.log("Accepted File: " + acceptedFiles[0].type)
             //assign the state.array to filesToBeSent var then push this file into it and then assign it back to state.
@@ -99,10 +98,10 @@ class UploadVideo extends Component {
         uploadTask.on('state_changed', function (snapshot) {
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             switch (snapshot.state) {
-                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                case firebaseApp.storage.TaskState.PAUSED: // or 'paused'
                     console.log('Upload is paused');
                     break;
-                case firebase.storage.TaskState.RUNNING: // or 'running'
+                case firebaseApp.storage.TaskState.RUNNING: // or 'running'
                     console.log('Upload is running');
                     console.log(videoRef.fullPath);
                     break;
@@ -147,7 +146,7 @@ class UploadVideo extends Component {
                 userid: userUID
             });
 
-            window.location.replace('http://www.beztbaba.com/');
+            window.location.replace('http://localhost:3000/');
         });
 
         //empty out array after everything is done. 
@@ -158,7 +157,7 @@ class UploadVideo extends Component {
     render() {
 
         function initApp() {
-            firebase.auth().onAuthStateChanged(function (user) {
+            firebaseApp.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     //user has signed in so get their User UID string
                     userUID = user.uid;
@@ -166,7 +165,7 @@ class UploadVideo extends Component {
                 } else {
                     //user not logged in.
                     window.alert("Please sign in first in order to upload a video");
-                    window.location.replace("http://www.beztbaba.com/ProfileCheck");
+                    window.location.replace("http://localhost:3000/ProfileCheck");
 
                 }
             });
